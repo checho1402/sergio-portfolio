@@ -1,0 +1,547 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import heroPhoto from '../assets/foto.jpg';
+import linkedIn from '../assets/linkedin.png';
+import contact from '../assets/contact.png';
+import { workExperience } from "../data/data.js";
+import { awards } from "../data/data.js";
+import { idioms } from "../data/data.js";
+import { languages } from "../data/data.js";
+import { skills } from "../data/data.js";
+
+
+const translations = {
+  greeting: { 
+    en: "About me", 
+    es: "Sobre mi" 
+  },
+  name: { 
+    en: "Sergio L. Ramos", 
+    es: "Sergio L. Ramos" 
+  },
+  prefix: { 
+    en: "(he/him)", 
+    es: "(Él)" 
+  },
+  rol: { 
+    en: "B.Sc. in Computer Science", 
+    es: "Bachiller en Ciencia de la Computación" 
+  },
+  description: { 
+    en: "Technologist in Information Systems and Full Stack Developer with more than 2 years of experience, specialized in creating modern, scalable and user-centered solutions.", 
+    es: "Tecnólogo en Sistemas de información y Desarrollador Full Stack con más de 2 años de experiencia, especializado en crear soluciones modernas, escalables y centradas en el usuario." 
+  },  
+  resume: { 
+    en: "Tip: Press Ctrl + P to print my formal resume.", 
+    es: "Tip: Presiona Ctrl + P para imprimir mi currículum formal." 
+  },
+  availability: {
+    en: "Open to work",
+    es: "Disponible para trabajar"
+  },
+  viewProjects: { 
+    en: "cd ~/Projects", 
+    es: "cd ~/Proyectos" 
+  },
+  getInTouch: { 
+    en: "$ contact --me", 
+    es: "$ contactame" 
+  },
+  aboutDesc1: {
+    es: "Soy Desarrollador Full Stack con experiencia en la creación de aplicaciones web completas, desde el diseño de la arquitectura hasta la implementación y despliegue. Trabajo integrando APIs, bases de datos y servicios modernos, con foco en rendimiento, mantenibilidad y experiencia de usuario. Me adapto bien a equipos colaborativos, sigo buenas prácticas de desarrollo y busco entregar soluciones estables que aporten valor real al negocio. Estoy interesado en oportunidades remotas o híbridas donde pueda seguir creciendo profesionalmente y contribuir a proyectos bien estructurados.",
+    en: "I am a Full Stack Developer with experience building end-to-end web applications, from architecture design to implementation and deployment. I work integrating APIs, databases, and modern services, with a focus on performance, maintainability, and user experience. I adapt well to collaborative teams, follow development best practices, and aim to deliver stable solutions that bring real business value. I am interested in remote or hybrid opportunities where I can continue growing professionally and contribute to well-structured projects."
+  },
+  aboutDesc2: {
+    es: "Trabajo integrando API, bases de datos y servicios de nube modernos, con un fuerte enfoque en el rendimiento, la capacidad de mantenimiento y la experiencia del usuario.",
+    en: "I work integrating APIs, databases, and modern cloud services, with a strong focus on performance, maintainability, and user experience."
+  },
+  aboutDesc3: {
+    es: "Estoy interesado en oportunidades remotas o híbridas donde pueda seguir creciendo profesionalmente y contribuir a proyectos bien estructurados y de impacto.",
+    en: "I am interested in remote or hybrid opportunities where I can continue growing professionally and contribute to well-structured, impactful projects."
+  },
+  interestsTitle: {
+	en: "Interests",
+	es: "Intereses"
+  },
+  educationTitle: {
+	en: "Education",
+	es: "Educación"
+  },
+  interests: {
+	en: [
+		"• Full Stack Web Development",
+		"• Backend Architecture & APIs",
+		"• Cloud & DevOps Fundamentals",
+		"• Clean Code & Best Practices",
+		"• Scalable Systems"
+	],
+	es: [
+		"• Desarrollo Web Full Stack",
+		"• Arquitectura Backend y APIs",
+		"• Fundamentos de Cloud y DevOps",
+		"• Código limpio y buenas prácticas",
+		"• Sistemas escalables"
+	]
+  },
+  education: {
+	en: [
+	  {
+		title: "B.Sc. in Computer Science",
+		place: "Universidad Católica San Pablo"
+	  },
+	  {
+		title: "Technologist in Information Systems",
+		place: "Corresponding Institute / University"
+	  }
+	],
+	es: [
+	  {
+		title: "Bachiller en Ciencia de la Computación",
+		place: "Universidad Católica San Pablo"
+	  },
+	  {
+		title: "Tecnólogo en Sistemas de Información",
+		place: "Instituto / Universidad correspondiente"
+	  }
+	]
+  },
+  trayectory: { 
+	en: 'Work Experience', 
+	es: 'Experiencia Laboral' 
+  },
+  papers: { 
+    en: "Recent Publications", 
+    es: "Publicaciones recientes" 
+  },
+  tech: { 
+    en: "Programming Languages", 
+    es: "Lenguajes de Programación" 
+  },
+  awardTitle: { 
+    en: "Awards & Recognition", 
+    es: "Honores y Premios" 
+  },
+  skills: { 
+    en: "Skills & Hobbies", 
+    es: "Aptitudes y Hobbies" 
+  },
+  languages: { 
+    en: "Languages", 
+    es: "Lenguajes" 
+  },
+  idioms: { 
+    en: "Languages", 
+    es: "Lenguajes" 
+  }
+};
+
+---
+
+<Layout title={`Home | Sergio Ramos`}>
+	<Header />
+	
+	<main class="min-h-screen px-4 sm:px-6 md:px-6">
+		<section class="max-w-3xl mx-auto py-12 sm:py-16 pt-30 sm:pt-30 fade-in px-2 sm:px-0">
+			<div class="flex flex-row items-start gap-8 sm:gap-8">
+				<div class="flex flex-col pt-10 sm:flex-col items-center justify-center gap-1 sm:gap-1">
+					<div class="w-20 h-20 sm:w-28 sm:h-32 md:w-50 md:h-50 rounded-full bg-gray-100 dark:bg-gray-800 border-1 border-gray-300 dark:border-gray-600 flex items-center justify-center overflow-hidden animated-border always-visible flex-shrink-0 shadow-lg dark:shadow-white/20">
+						<img src={heroPhoto.src} alt="Sergio Ramos" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+						<span class="text-2xl sm:text-3xl md:text-4xl text-gray-500 dark:text-gray-400 hidden">📷</span>
+					</div>
+					<h1 class="text-1xl sm:text-2xl md:text-2xl text-gray-900 dark:text-white font-bold text-center px-2 sm:px-0" data-en={translations.name.en} data-es={translations.name.es}>
+						{translations.name.en}
+					</h1>
+					<h1 class="text-1xl sm:text-1xl md:text-1xl text-gray-500 dark:text-white-500 text-center px-2 sm:px-0" data-en={translations.prefix.en} data-es={translations.prefix.es}>
+						{translations.prefix.en}
+					</h1>
+					<h1 class="text-1l sm:text-1l md:text-1l text-gray-900 dark:text-white text-center px-2 sm:px-0" data-en={translations.rol.en} data-es={translations.rol.es}>
+						{translations.rol.en}
+					</h1>
+					<div class="flex gap-3 mt-2 text-gray-600 dark:text-gray-400">
+
+						<a href="https://github.com/checho1402" target="_blank"
+							class="group relative transition hover:text-gray-900 dark:hover:text-white">
+							<img src="https://cdn.simpleicons.org/github"
+								class="w-4 h-4 dark:invert" />
+							<span class="tooltip dark:invert">&gt; github</span>
+						</a>
+						
+						<a href="https://www.linkedin.com/in/sergio-leandro-ramos-villena-45b0bb270/" target="_blank"
+							class="group relative transition hover:text-gray-900 dark:hover:text-white">
+							<img src={linkedIn.src}
+								class="w-4 h-4" />
+							<span class="tooltip dark:invert">&gt; linkedin</span>
+						</a>
+						
+						<a href="https://scholar.google.com/citations?user=1iFjGNsAAAAJ&hl" target="_blank"
+							class="group relative transition hover:text-gray-900 dark:hover:text-white">
+							<img src="https://cdn.simpleicons.org/googlescholar"
+								class="w-4 h-4" />
+							<span class="tooltip dark:invert">&gt; scholar</span>
+						</a>
+						
+						<a href="https://orcid.org/0009-0006-2861-9296" target="_blank"
+							class="group relative transition hover:text-gray-900 dark:hover:text-white">
+							<img src="https://cdn.simpleicons.org/orcid"
+								class="w-4 h-4" />
+							<span class="tooltip dark:invert">&gt; orcid</span>
+						</a>
+						
+						<a href="https://www.scopus.com/authid/detail.uri?authorId=59917444800" target="_blank"
+							class="group relative transition hover:text-gray-900 dark:hover:text-white">
+							<img src="https://cdn.simpleicons.org/scopus"
+								class="w-4 h-4" />
+							<span class="tooltip dark:invert">&gt; scopus</span>
+						</a>
+						
+						<a href="https://mail.google.com/mail/?view=cm&fs=1&to=slrv.ramosv@gmail.com&su=Contacto%20Portafolio&body=Hola%20Sergio,"
+							class="group relative transition hover:text-gray-900 dark:hover:text-white">
+							<img src="https://cdn.simpleicons.org/gmail"
+								class="w-4 h-4 dark:invert" />
+							<span class="tooltip dark:invert">&gt; email</span>
+						</a>
+						
+						<a href="/contact.vcf"  download
+							class="group relative transition hover:text-gray-900 dark:hover:text-white">
+							<img src={contact.src}
+								class="w-4 h-4 dark:invert" />
+							<span class="tooltip dark:invert">&gt; vcard</span>
+						</a>
+						
+						</div>
+						
+				</div>
+				<div>
+					<h1 class="text-2xl sm:text-2xl md:text-2xl font-bold text-gray-900 dark:text-white mb-9 sm:mb-9" data-en={translations.greeting.en} data-es={translations.greeting.es}>{translations.greeting.en}</h1>
+					<p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-lg mx-auto mb-4 sm:mb-6 px-2 sm:px-0" data-en={translations.aboutDesc1.en} data-es={translations.aboutDesc1.es}>
+						{translations.aboutDesc1.en}
+					</p>
+					<p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-lg mx-auto mb-4 sm:mb-6 px-2 sm:px-0" data-en={translations.aboutDesc2.en} data-es={translations.aboutDesc2.es}>
+						I work integrating <span class="font-semibold text-gray-900 dark:text-white"> APIs, databases, and modern cloud services</span>, with a strong focus on performance, maintainability, and user experience.
+					</p>
+					<p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-lg mx-auto mb-4 sm:mb-6 px-2 sm:px-0" data-en={translations.aboutDesc3.en} data-es={translations.aboutDesc3.es}>
+						I am interested in <span class="font-semibold text-gray-900 dark:text-white"> remote or hybrid opportunities</span> where I can continue growing professionally and contribute to well-structured, impactful projects.
+					</p>
+
+
+					<div class="max-w-2xl mx-auto mt-12 grid grid-cols-1 sm:grid-cols-2">
+						<div>
+							<h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4" data-en={translations.interestsTitle.en} data-es={translations.interestsTitle.es}>
+								{translations.interestsTitle.en}
+							</h2>
+						
+							<ul class="space-y-2 text-sm sm:text-base text-gray-600 dark:text-gray-400 pl-3">
+								<li data-en={translations.interests.en[0]} data-es={translations.interests.es[0]}></li>
+								<li data-en={translations.interests.en[1]} data-es={translations.interests.es[1]}></li>
+								<li data-en={translations.interests.en[2]} data-es={translations.interests.es[2]}></li>
+								<li data-en={translations.interests.en[3]} data-es={translations.interests.es[3]}></li>
+								<li data-en={translations.interests.en[4]} data-es={translations.interests.es[4]}></li>
+							</ul>
+						</div>
+						<div>
+							<h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4" data-en={translations.educationTitle.en} data-es={translations.educationTitle.es}>
+								{translations.educationTitle.en}
+							</h2>
+							<ul class="space-y-4 text-sm sm:text-base pl-3">
+								<li class="flex items-start gap-3">
+									<svg class="w-5 h-5 flex-shrink-0 mt-1 text-gray-900 dark:text-white"
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round">
+										<path d="M4.26 10.147a60.436 60.436 0 0 0-.491 6.347A48.627 48.627 0 0 1 12 20.904a48.627 48.627 0 0 1 8.232-4.41a60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.905 59.905 0 0 1 12 3.493a59.902 59.902 0 0 1 10.399 5.84a51.39 51.39 0 0 0-2.658.814m-15.482 0A50.697 50.697 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5m0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"/>
+									</svg>
+								  <div>
+									<p class="font-semibold text-gray-900 dark:text-white" data-en={translations.education.en[0].title} data-es={translations.education.es[0].title}>
+										{translations.education.en[0].title}
+									</p>
+									<p class="text-gray-600 dark:text-gray-400" data-en={translations.education.en[0].place} data-es={translations.education.es[0].place}>
+										{translations.education.en[0].place}
+									</p>
+								  </div>
+								</li>
+							  
+								<li class="flex items-start gap-3">
+									<svg class="w-5 h-5 flex-shrink-0 mt-1 text-gray-900 dark:text-white"
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round">
+										<path d="M4.26 10.147a60.436 60.436 0 0 0-.491 6.347A48.627 48.627 0 0 1 12 20.904a48.627 48.627 0 0 1 8.232-4.41a60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.905 59.905 0 0 1 12 3.493a59.902 59.902 0 0 1 10.399 5.84a51.39 51.39 0 0 0-2.658.814m-15.482 0A50.697 50.697 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5m0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"/>
+									</svg>
+								  <div>
+									<p class="font-semibold text-gray-900 dark:text-white" data-en={translations.education.en[1].title} data-es={translations.education.es[1].title}>
+										{translations.education.en[1].title}
+									</p>
+									<p class="text-gray-600 dark:text-gray-400" data-en={translations.education.en[1].place} data-es={translations.education.es[1].place}>
+										{translations.education.en[1].place}
+									</p>
+								  </div>
+								</li>
+							  </ul>
+							  
+						</div>
+					</div>
+
+
+
+
+				</div>
+			</div>
+		</section>
+		
+		<section class="max-w-3xl mx-auto py-12 sm:py-13 border-t border-gray-200 dark:border-gray-700 parallax-section fade-in px-2 sm:px-0">
+			
+			<h2 class="text-3xl font-bold text-gray-900 dark:text-white text-center" data-en={translations.trayectory.en} data-es={translations.trayectory.es}>
+				{translations.trayectory.en}
+			</h2>
+
+			<div class="space-y-8 sm:space-y-12 pt-10">
+				{
+					workExperience.map((work, index) => (
+						<div class="relative pl-6 sm:pl-8 border-l-2 border-gray-200 dark:border-gray-700 bg-transparent group cursor-pointer hover:scale-105 transform-all">
+							<div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-gray-900 dark:bg-gray-500 group-hover:animated-bg group-hover:scale-125"></div>
+							<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2 sm:gap-0">
+								<h3 class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white" data-en={work.title.en} data-es={work.title.es}>{work.title.en}</h3>
+								<span class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-medium" data-en={work.year.en} data-es={work.year.es}>{work.year.es}</span>
+							</div>
+							<p class="text-sm sm:text-lg text-gray-600 dark:text-gray-400 font-medium mb-2 sm:mb-3">{work.company}</p>
+							{
+								work.description.en.map((desc, i) => (
+									<span></span><p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed pt-1" data-en={work.description.en[i]} data-es={work.description.es[i]}>{work.description.en[i]}</p>
+								))
+							}
+						</div>
+					))
+				}
+			</div>
+		</section>
+		
+
+
+
+
+
+
+		<section class="max-w-3xl mx-auto py-12 sm:py-13 border-t border-gray-200 dark:border-gray-700 parallax-section fade-in px-2 sm:px-0">
+			<h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-10 text-center" data-en={translations.papers.en} data-es={translations.papers.es}>
+				{translations.papers.en}
+			</h2>
+			<div class="publication">
+
+				<p class="text-gray-800 dark:text-gray-200 leading-relaxed">
+				  <span class="font-semibold">
+					Atencio-Torres, Carlos, Ochoa-Luna, José,
+					<span class="underline">Ramos-Villena, Sergio</span> (2025).
+				  </span>
+				  <span class="italic">
+					Hybrid Quantum Model for Brain Tumor Classification ·
+				  </span>
+				  <span class="italic">
+					SIMBig 2024 · Springer.
+				  </span>
+				</p>
+			  
+				<div class="flex gap-4 mt-2 text-sm text-emerald-400">
+				  <a href="https://link.springer.com/chapter/10.1007/978-3-031-91428-7_26" target="_blank" class="flex items-center gap-1 hover:underline"> URL </a>
+				  ·
+				  <button class="cite-btn text-sm cursor-pointer" data-bib="/hybrid-quantum-brain-tumor.bib">	CITE </button>
+				  ·
+				  <a href="https://doi.org/10.1007/978-3-031-91428-7_26" target="_blank" class="flex items-center gap-1 hover:underline">	DOI </a>
+				</div>
+			  
+			</div>
+			
+			<div class="publication pt-6">
+
+				<p class="text-gray-800 dark:text-gray-200 leading-relaxed">
+				  <span class="font-semibold">
+					D. Lopez, J. Mamani, S. Ramos, Y. Túpac,
+					<span class="underline">V. Machaca</span> (2026).
+				  </span>
+				  <span class="italic">
+					NeoArgosTools: A Flowchart Pipeline Tool for Neoantigen Detection from Single Nucleotide Variants ·
+				  </span>
+				  <span class="italic">
+					International Conference on Information and Communication Technology for Intelligent Systems · ICTIS2025 · Springer.
+				  </span>
+				</p>
+			  
+				<div class="flex gap-4 mt-2 text-sm text-emerald-400">
+				  <a href="https://link.springer.com/chapter/10.1007/978-981-95-1361-1_10" target="_blank" class="flex items-center gap-1 hover:underline"> URL </a>
+				  ·
+				  <button class="cite-btn text-sm cursor-pointer" data-bib="/neo-argos-tools.bib">	CITE </button>
+				  ·
+				  <a href="https://doi.org/10.1007/978-981-95-1361-1_10" target="_blank" class="flex items-center gap-1 hover:underline">	DOI </a>
+				</div>
+			  
+			</div>
+							
+		</section>
+
+
+		<section class="max-w-3xl mx-auto py-12 sm:py-13 border-t border-gray-200 dark:border-gray-700 parallax-section fade-in px-2 sm:px-0">
+			<h2 class="text-2xl text-gray-900 dark:text-white mb-6 text-center" data-en={translations.tech.en} data-es={translations.tech.es}>
+				{translations.tech.en}
+			</h2>
+			<div class="tech-ticker-container">
+				<div class="tech-ticker-content">
+					{
+						languages.map((language, index) => (
+							<div class="animated-border-general cursor-pointer px-4 py-2 rounded-full bg-transparent border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all whitespace-nowrap">
+								<p class="text-sm font-medium text-gray-900 dark:text-white">{language.prog}</p>
+							</div>	
+						))
+					}
+					{
+						languages.map((language, index) => (
+							<div class="animated-border-general cursor-pointer px-4 py-2 rounded-full bg-transparent border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all whitespace-nowrap">
+								<p class="text-sm font-medium text-gray-900 dark:text-white">{language.prog}</p>
+							</div>	
+						))
+					}
+				</div>
+			</div>
+
+
+
+
+
+
+			<h2 class="text-2xl text-gray-900 dark:text-white mb-6 text-center pt-20" data-en={translations.skills.en} data-es={translations.skills.es}>
+				{translations.skills.en}
+			</h2>
+			<div class="right-ticker-container">
+				<div class="right-ticker-content">
+					{
+						skills.map((skill, index) => (
+							<div class="animated-border-general cursor-pointer px-4 py-2 rounded-full bg-transparent border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all whitespace-nowrap">
+								<p class="text-sm font-medium text-gray-900 dark:text-white" data-en={skill.en} data-es={skill.es}>{skill.en}</p>
+							</div>	
+						))
+					}
+					{
+						skills.map((skill, index) => (
+							<div class="animated-border-general cursor-pointer px-4 py-2 rounded-full bg-transparent border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all whitespace-nowrap">
+								<p class="text-sm font-medium text-gray-900 dark:text-white" data-en={skill.en} data-es={skill.es}>{skill.en}</p>
+							</div>	
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<section class="max-w-3xl mx-auto py-12 sm:py-13 border-t border-gray-200 dark:border-gray-700 parallax-section fade-in px-2 sm:px-0">
+			
+			<h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-10 text-center" data-en={translations.awardTitle.en} data-es={translations.awardTitle.es}>
+				{translations.awardTitle.en}
+			</h2>
+			{
+				awards.map((award, index) => (
+					<div class="animated-border always-visible mt-8 sm:mt-12 p-4 sm:p-6 rounded-xl bg-transparent border border-gray-200 dark:border-gray-700">
+
+						<p class="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-500 mb-3 sm:mb-4 tracking-wider uppercase" data-en={award.date.en} data-es={award.date.es}>{award.date.en}</p>
+						<h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white" data-en={award.title.en} data-es={award.title.es}>
+							{award.title.en}
+						</h1>
+						<p class="mt-3 sm:mt-4 text-sm sm:text-lg text-gray-800 dark:text-gray-200" data-en={award.place.en} data-es={award.place.es}>
+							{award.place.en}
+						</p>
+						<p class="mt-1 sm:mt-1 text-sm sm:text-lg text-gray-600 dark:text-gray-400" data-en={award.desc.en} data-es={award.desc.es}>
+							{award.desc.en}
+						</p>
+					</div>
+				))
+			}
+		
+		</section>
+
+		<section class="max-w-3xl mx-auto parallax-section fade-in">
+			<h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-10 text-center" data-en={translations.languages.en} data-es={translations.languages.es}>
+				{translations.languages.en}
+			</h2>
+
+			<div class="grid grid-cols-3 sm:grid-cols-3 gap-3 sm:gap-3">
+				{
+					idioms.map((idiom, index) => (
+						<div class="animated-border-general flex items-center gap-3 p-3 sm:p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-gray-900 dark:hover:border-gray-500 transition-all hover:scale-105 group cursor-default">
+							<span class="text-lg text-gray-800 dark:text-gray-200" data-en={idiom.logo.en} data-es={idiom.logo.es}>{idiom.logo.en}</span>
+							<span class="text-xs sm:text-sm font-medium text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors" data-en={idiom.language.en} data-es={idiom.language.es}>
+								{idiom.language.en} 
+							</span>
+							<span class="text-gray-500 dark:text-gray-400"data-en={idiom.level.en} data-es={idiom.level.es}>{idiom.level.en}</span>
+						</div>
+					))
+				}
+			</div>
+			
+		</section>
+
+		<section class="max-w-3xl mx-auto parallax-section mb-100"></section>
+		
+
+	</main>
+
+	<Footer />
+
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const observerOptions = {
+				root: null,
+				rootMargin: '0px',
+				threshold: 0.1
+			};
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('visible');
+					}
+				});
+			}, observerOptions);
+
+			document.querySelectorAll('.fade-in').forEach(el => {
+				observer.observe(el);
+			});
+
+			window.addEventListener('scroll', () => {
+				const scrolled = window.pageYOffset;
+				document.querySelectorAll('.parallax-section').forEach(section => {
+					const speed = 0.1;
+					(section as HTMLElement).style.transform = `translateY(${scrolled * speed}px)`;
+				});
+			});
+		});
+		
+		document.addEventListener("click", async (e) => {
+			const btn = e.target.closest(".cite-btn");
+			if (!btn) return;
+
+			const bibUrl = btn.dataset.bib;
+
+			try {
+				const res = await fetch(bibUrl);
+				const bibtex = await res.text();
+
+				await navigator.clipboard.writeText(bibtex);
+
+				const original = btn.textContent;
+				btn.textContent = "Copied!";
+				setTimeout(() => (btn.textContent = original), 1200);
+			} catch (err) {
+				btn.textContent = "Error";
+			}
+		});
+
+	</script>
+
+	  
+</Layout>

@@ -1,0 +1,153 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+
+const theme = Astro.cookies.get('theme')?.value || 'light';
+const isDark = theme === 'dark';
+
+import '../styles/global.css';
+import "../styles/content.css";
+---
+
+<!doctype html>
+<html lang="en" class={isDark ? 'dark' : ''}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Full Stack Developer Portfolio" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class="bg-white dark:bg-gray-950 transition-colors duration-300">
+		<slot />
+		<script>
+			declare global {
+				interface Window {
+					toggleTheme: () => void;
+					toggleLang: () => void;
+					updatePageContent: () => void;
+				}
+			}
+
+			// Initialize theme from localStorage if possible, to stay in sync
+			const savedTheme = localStorage.getItem('theme');
+			if (savedTheme) {
+				document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+			}
+
+			let currentLang = localStorage.getItem('lang') || 'en';
+			document.documentElement.setAttribute('data-lang', currentLang);
+
+			window.updatePageContent = function() {
+				const lang = document.documentElement.getAttribute('data-lang') || 'en';
+				
+				const langBtn = document.getElementById('lang-btn');
+				if (langBtn) {
+					langBtn.textContent = lang === 'es' ? 'ES' : 'EN';
+				}
+
+				document.querySelectorAll('[data-en]').forEach(el => {
+					const en = el.getAttribute('data-en');
+					const es = el.getAttribute('data-es');
+					if (en && es) {
+						// Si el elemento tiene HTML dentro (contiene spans), recrear con HTML
+						if (el.innerHTML.includes('<span')) {
+							if (lang === 'es') {
+								// Para español, reemplazar palabras específicas con versión española
+								el.innerHTML = es.replace('Tecnólogo en Sistemas de información', '<span class="font-semibold text-gray-900 dark:text-white">Tecnólogo en Sistemas de información</span>')
+									.replace('Desarrollador Full Stack', '<span class="font-semibold text-gray-900 dark:text-white">Desarrollador Full Stack</span>')
+									.replace('Ctrl', '<span class="font-semibold text-gray-900 dark:text-white">Ctrl</span>')
+									.replace(' P ', '<span class="font-semibold text-gray-900 dark:text-white"> P </span>')
+									.replace('API, bases de datos y servicios de nube modernoss', '<span class="font-semibold text-gray-900 dark:text-white"> API, bases de datos y servicios de nube modernos</span>')
+									.replace('oportunidades remotas o híbridas', '<span class="font-semibold text-gray-900 dark:text-white"> oportunidades remotas o híbridas</span>')
+									.replace('- ', '• ')
+									.replace('—', '<br>')								
+									.replace('* ', '<svg class="w-5 h-5 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M4.26 10.147a60.436 60.436 0 0 0-.491 6.347A48.627 48.627 0 0 1 12 20.904a48.627 48.627 0 0 1 8.232-4.41a60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.905 59.905 0 0 1 12 3.493a59.902 59.902 0 0 1 10.399 5.84a51.39 51.39 0 0 0-2.658.814m-15.482 0A50.697 50.697 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5m0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"/> </svg>');
+									
+							} else {
+								// Para inglés
+								el.innerHTML = en.replace('Technologist in Information Systems', '<span class="font-semibold text-gray-900 dark:text-white">Technologist in Information Systems</span>')
+									.replace('Full Stack Developer', '<span class="font-semibold text-gray-900 dark:text-white">Full Stack Developer</span>')
+									.replace('Ctrl', '<span class="font-semibold text-gray-900 dark:text-white">Ctrl</span>')
+									.replace(' P ', '<span class="font-semibold text-gray-900 dark:text-white"> P </span>')
+									.replace('APIs, databases, and modern cloud services', '<span class="font-semibold text-gray-900 dark:text-white"> APIs, databases, and modern cloud services</span>')
+									.replace('remote or hybrid opportunities', '<span class="font-semibold text-gray-900 dark:text-white"> remote or hybrid opportunities</span>')
+									.replace('- ', '• ')
+									.replace('—', '<br>')
+									.replace('* ', '<svg class="w-5 h-5 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M4.26 10.147a60.436 60.436 0 0 0-.491 6.347A48.627 48.627 0 0 1 12 20.904a48.627 48.627 0 0 1 8.232-4.41a60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.905 59.905 0 0 1 12 3.493a59.902 59.902 0 0 1 10.399 5.84a51.39 51.39 0 0 0-2.658.814m-15.482 0A50.697 50.697 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5m0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"/> </svg>')
+									.replace('${edu.title}', '<span class="font-semibold text-gray-900 dark:text-white">Ctrl</span>');
+			
+							}
+						} else {
+							el.textContent = lang === 'es' ? es : en;
+						}
+					}
+				});
+
+				document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+					const en = el.getAttribute('data-en-placeholder');
+					const es = el.getAttribute('data-es-placeholder');
+					if (en && es) {
+						(el as HTMLInputElement | HTMLTextAreaElement).placeholder = lang === 'es' ? es : en;
+					}
+				});
+
+				document.querySelectorAll('[data-en-label]').forEach(el => {
+					const en = el.getAttribute('data-en-label');
+					const es = el.getAttribute('data-es-label');
+					if (en && es) {
+						(el as HTMLLabelElement).textContent = lang === 'es' ? es : en;
+					}
+				});
+			};
+
+			window.toggleTheme = () => {
+				const isDark = document.documentElement.classList.toggle('dark');
+				const theme = isDark ? 'dark' : 'light';
+				localStorage.setItem('theme', theme);
+				// Also set a cookie so the server knows the theme on next request
+				document.cookie = `theme=${theme}; path=/; max-age=31536000`;
+			};
+
+			window.toggleLang = () => {
+				// Crear overlay
+				const overlay = document.createElement('div');
+				overlay.className = 'lang-change-overlay';
+				
+				const modal = document.createElement('div');
+				modal.className = 'lang-change-modal';
+				
+				const currentLangAttr = document.documentElement.getAttribute('data-lang') || 'en';
+				const isSpanish = currentLangAttr === 'es';
+				const text = isSpanish ? 'Changing language...' : 'Cambiando lenguaje...';
+				
+				modal.innerHTML = `<h2>${text}</h2>`;
+				overlay.appendChild(modal);
+				document.body.appendChild(overlay);
+				
+				// Cambiar idioma después de 1 segundo
+				setTimeout(() => {
+					currentLang = currentLang === 'en' ? 'es' : 'en';
+					document.documentElement.setAttribute('data-lang', currentLang);
+					localStorage.setItem('lang', currentLang);
+					window.updatePageContent();
+					
+					// Ocultar overlay después de 500ms
+					overlay.classList.add('hidden');
+					setTimeout(() => {
+						overlay.remove();
+					}, 300);
+				}, 1000);
+			};
+
+			document.addEventListener('DOMContentLoaded', () => {
+				window.updatePageContent();
+			});
+		</script>
+	</body>
+</html>

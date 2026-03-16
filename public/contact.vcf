@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Ramos;Sergio;;;
+FN:Sergio Ramos
+ORG:Independent
+TITLE:Full Stack Developer
+TEL;TYPE=CELL,VOICE:+51932416666
+EMAIL;TYPE=INTERNET:slrv.ramosv@gmail.com
+URL:https://github.com/checho1402
+URL:https://www.linkedin.com/in/sergio-leandro-ramos-villena-45b0bb270/
+PHOTO;VALUE=URI:https://localhost:4321/foto.jpg
+END:VCARD

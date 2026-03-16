@@ -1,0 +1,341 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+@theme {
+	
+	--color-primary: #111827;
+	--color-primary-dark: #4b5563;
+	/* LIGHT MODE (default) */
+	--color-secondary: #4b5563;      /* gris medio */
+	--color-code: #f3f4f6;           /* fondo claro para code */
+}
+  
+.dark {
+	--color-primary: #f9fafb;       /* casi blanco */
+	--color-secondary: #9ca3af;     /* gris claro */
+	--color-code: #111827;          /* fondo oscuro */
+}
+  
+
+html {
+	color-scheme: light dark;
+}
+
+html.dark {
+	color-scheme: dark;
+}
+
+.parallax-section {
+	transition: transform 0.3s ease-out;
+}
+
+.fade-in {
+	opacity: 0;
+	transform: translateY(30px);
+	transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+@keyframes border-gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.animated-border-general {
+	position: relative;
+}
+
+.animated-border-general::before {
+	content: '';
+	position: absolute;
+	inset: -2px;
+	padding: 2px;
+	border-radius: inherit;
+	background: linear-gradient(45deg, #FF0018, #FFA52C, #FFFF41, #008018, #0000F9, #86007D);
+	background-size: 300% 300%;
+	animation: border-gradient 4s ease infinite;
+	z-index: -1;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+	mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+}
+
+.animated-border-general:hover::before,
+.animated-border-general.always-visible::before {
+	opacity: 1;
+}
+
+.animated-border-general {
+	position: relative;
+	z-index: 0;
+}
+
+
+
+.animated-border {
+	position: relative;
+}
+
+.animated-border::before {
+	content: '';
+	position: absolute;
+	inset: -2px;
+	padding: 2px;
+	border-radius: inherit;
+	background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96c93d, #ff6b6b);
+	background-size: 300% 300%;
+	animation: border-gradient 4s ease infinite;
+	z-index: -1;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+	mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+}
+
+.animated-border:hover::before,
+.animated-border.always-visible::before {
+	opacity: 1;
+}
+
+.animated-border {
+	position: relative;
+	z-index: 0;
+}
+
+@utility animated-bg {
+	background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96c93d, #ff6b6b);
+	background-size: 300% 300%;
+	animation: border-gradient 4s ease infinite;
+	color: white !important;
+}
+
+@keyframes scroll-left {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+
+@keyframes scroll-right {
+	0% {
+		transform: translateX(-50%);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+.tech-ticker-container {
+	overflow: hidden;
+	width: 100%;
+	position: relative;
+	mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.tech-ticker-content {
+	display: flex;
+	width: max-content;
+	gap: 1.5rem;
+	animation: scroll-left 40s linear infinite;
+}
+
+.tech-ticker-content:hover {
+	animation-play-state: paused;
+}
+
+.right-ticker-container {
+	overflow: hidden;
+	width: 100%;
+	position: relative;
+	mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.right-ticker-content {
+	display: flex;
+	width: max-content;
+	gap: 1.5rem;
+	animation: scroll-right 20s linear infinite;
+}
+
+.right-ticker-content:hover {
+	animation-play-state: paused;
+}
+
+
+@keyframes fadeInOverlay {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOutOverlay {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.lang-change-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.6);
+	backdrop-filter: blur(8px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 999;
+	animation: fadeInOverlay 0.3s ease;
+}
+
+.lang-change-overlay.hidden {
+	animation: fadeOutOverlay 0.3s ease forwards;
+}
+
+.lang-change-modal {
+	text-align: center;
+	animation: fadeInOverlay 0.3s ease;
+}
+
+.lang-change-modal h2 {
+	font-size: 2rem;
+	font-weight: bold;
+	color: white;
+}
+
+.name-cursor::after {
+	content: "_";
+	margin-left: 2px;
+	animation: blink 1s steps(1, start) infinite;
+  }
+  
+@keyframes blink {
+	50% {
+	  opacity: 0;
+	}
+}
+
+kbd {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    border-radius: 6px;
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+    line-height: 1;
+    margin: 0 2px;
+  }
+
+@media (prefers-color-scheme: dark) {
+    kbd {
+      background-color: rgba(255,255,255,0.15);
+      color: white;
+    }
+}
+
+.tooltip {
+	position: absolute;
+	top: 1.75rem;
+	left: 50%;
+	transform: translateX(-50%);
+	white-space: nowrap;
+	font-size: 0.75rem;
+	font-family: monospace;
+	color: #000000;
+	opacity: 0;
+	transition: opacity 0.2s ease;
+}
+  
+.group:hover .tooltip {
+	opacity: 1;
+}
+  
+.cite-btn {
+	background: none;
+	border: none;
+	padding: 0;
+	font: inherit;
+	color: inherit;
+	cursor: pointer;
+  }
+  
+.cite-btn:hover {
+	text-decoration: underline;
+}
+  
+
+
+
+
+@keyframes ai-neon-anim {
+    0% {
+      filter: blur(8px) hue-rotate(0deg);
+      opacity: 0.75;
+      inset: -2px;
+    }
+    50% {
+      filter: blur(12px) hue-rotate(180deg);
+      opacity: 1;
+      inset: -6px;
+    }
+    100% {
+      filter: blur(8px) hue-rotate(360deg);
+      opacity: 0.75;
+      inset: -2px;
+    }
+  }
+
+
+.ai-neon-effect::before {
+  @apply absolute -inset-1 -z-10 rounded-[inherit] content-[''];
+  @apply animate-[ai-neon-anim_4s_linear_infinite] opacity-75 blur-sm;
+  @apply transition-[opacity,filter] duration-300;
+
+  background: radial-gradient(
+      120% 120% at 0% 0%,
+      rgba(56, 189, 248, 0.6),
+      transparent 60%
+    ),
+    radial-gradient(
+      120% 120% at 100% 100%,
+      rgba(99, 102, 241, 0.6),
+      transparent 60%
+    ),
+    radial-gradient(
+      120% 120% at 50% 100%,
+      rgba(148, 163, 184, 0.6),
+      transparent 60%
+    );
+}
+
+.ai-neon-effect:hover::before {
+  @apply opacity-100 blur-md;
+}
+
+
