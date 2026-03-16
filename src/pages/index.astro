@@ -15,10 +15,6 @@ const translations = {
     en: "Sergio Ramos", 
     es: "Sergio Ramos" 
   },
-  description: { 
-    en: "Technologist in Information Systems and Full Stack Developer with more than 2 years of experience, specialized in creating modern, scalable and user-centered solutions.", 
-    es: "Tecnólogo en Sistemas de información y Desarrollador Full Stack con más de 2 años de experiencia, especializado en crear soluciones modernas, escalables y centradas en el usuario." 
-  },  
   resume: { 
     en: "Tip: Press Ctrl + P to print my formal resume.", 
     es: "Tip: Presiona Ctrl + P para imprimir mi currículum formal." 
@@ -39,14 +35,22 @@ const translations = {
     en: "$echo 'About Me'", 
     es: "$echo 'Sobre mí'" 
   },
-  aboutDesc: {
-    es: "Soy Desarrollador Full Stack con experiencia en la creación de aplicaciones web completas, desde el diseño de la arquitectura hasta la implementación y despliegue. Trabajo integrando APIs, bases de datos y servicios modernos, con foco en rendimiento, mantenibilidad y experiencia de usuario. Me adapto bien a equipos colaborativos, sigo buenas prácticas de desarrollo y busco entregar soluciones estables que aporten valor real al negocio. Estoy interesado en oportunidades remotas o híbridas donde pueda seguir creciendo profesionalmente y contribuir a proyectos bien estructurados.",
-    en: "I am a Full Stack Developer with experience building end-to-end web applications, from architecture design to implementation and deployment. I work integrating APIs, databases, and modern services, with a focus on performance, maintainability, and user experience. I adapt well to collaborative teams, follow development best practices, and aim to deliver stable solutions that bring real business value. I am interested in remote or hybrid opportunities where I can continue growing professionally and contribute to well-structured projects."
-  },
+
   tech: { 
     en: "$ls ~/tools", 
     es: "$ls ~/tecnologías" 
+  },
+  aboutDesc: {
+	es: "Soy Científico de la Computación con experiencia desarrollando soluciones tecnológicas que combinan investigación e ingeniería de software. He trabajado en proyectos que abarcan desde aplicaciones web y sistemas distribuidos hasta inteligencia artificial, computación cuántica, gráficos y simulación. Me interesa especialmente construir sistemas inteligentes que puedan generar impacto real en áreas como la salud, la ciencia y la sociedad. Disfruto explorar nuevas tecnologías, trabajar en entornos colaborativos y transformar ideas complejas en soluciones funcionales, escalables y bien diseñadas. Busco oportunidades donde pueda seguir creciendo profesionalmente mientras contribuyo a proyectos innovadores y de alto impacto. Estoy interesado en oportunidades remotas o híbridas donde pueda seguir creciendo profesionalmente y contribuir a proyectos bien estructurados.",
+	en: "I am a Computer Scientist with experience developing technological solutions that combine research and software engineering. I have worked on projects ranging from web applications and distributed systems to artificial intelligence, quantum computing, graphics, and simulation. I am particularly interested in building intelligent systems that can create real-world impact in areas such as healthcare, science, and society. I enjoy exploring new technologies, working in collaborative environments, and transforming complex ideas into functional, scalable, and well-designed solutions. I am looking for opportunities where I can continue growing professionally while contributing to innovative and high-impact projects. I am interested in remote or hybrid opportunities where I can continue growing professionally and contribute to well-structured projects."
+  },
+
+  description: { 
+	en: "Computer Scientist and Software Developer with more than 1 year of experience building intelligent systems and modern software solutions. My work combines artificial intelligence, research, and full-stack development to create scalable, efficient, and impactful technologies.", 
+	es: "Científico de la Computación y Desarrollador de Software con más de 1 año de experiencia construyendo sistemas inteligentes y soluciones modernas. Mi trabajo combina inteligencia artificial, investigación y desarrollo full-stack para crear tecnologías escalables, eficientes y con impacto." 
   }
+
+
 };
 
 ---
@@ -135,8 +139,8 @@ const translations = {
 					<h1 class="name-cursor text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 px-2 sm:px-0" data-en={translations.name.en} data-es={translations.name.es}>
 						{translations.name.en}
 					</h1>
-					<p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-lg mx-auto mb-4 sm:mb-6 px-2 sm:px-0" data-en="Technologist in Information Systems and Full Stack Developer with more than 2 years of experience, specialized in creating modern, scalable and user-centered solutions." data-es="Tecnólogo en Sistemas de información y Desarrollador Full Stack con más de 2 años de experiencia, especializado en crear soluciones modernas, escalables y centradas en el usuario.">
-						<span class="font-semibold text-gray-900 dark:text-white">Technologist in Information Systems</span> and <span class="font-semibold text-gray-900 dark:text-white">Full Stack Developer</span> with more than 2 years of experience, specialized in creating modern, scalable and user-centered solutions.
+					<p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-lg mx-auto mb-4 sm:mb-6 px-2 sm:px-0" data-en="Computer Scientist and Software Developer with more than 1 year of experience building intelligent systems and modern software solutions. My work combines artificial intelligence, research, and full-stack development to create scalable, efficient, and impactful technologies." data-es="Científico de la Computación y Desarrollador de Software con más de 1 año de experiencia construyendo sistemas inteligentes y soluciones modernas. Mi trabajo combina inteligencia artificial, investigación y desarrollo full-stack para crear tecnologías escalables, eficientes y con impacto.">
+						<span class="font-semibold text-gray-900 dark:text-white">Computer Scientist</span> and <span class="font-semibold text-gray-900 dark:text-white">Software Developer</span> with more than 1 year of experience building intelligent systems and modern software solutions. My work combines artificial intelligence, research, and full-stack development to create scalable, efficient, and impactful technologies.
 					</p>
 					<p id="print-tip" class="print-tip mt-6 text-s text-gray-500 dark:text-gray-400 text-center" data-en="Tip: Press Ctrl + P to print my formal resume." data-es="Tip: Presiona Ctrl + P para imprimir mi currículum formal.">
 						Tip: Press <span class="font-semibold text-gray-900 dark:text-white">Ctrl</span> +<span class="font-semibold text-gray-900 dark:text-white"> P </span>to print my formal resume.

@@ -19,7 +19,7 @@ import "../styles/content.css";
 		<meta charset="UTF-8" />
 		<meta name="description" content="Full Stack Developer Portfolio" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" href="/logo.png" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
@@ -59,8 +59,8 @@ import "../styles/content.css";
 						if (el.innerHTML.includes('<span')) {
 							if (lang === 'es') {
 								// Para español, reemplazar palabras específicas con versión española
-								el.innerHTML = es.replace('Tecnólogo en Sistemas de información', '<span class="font-semibold text-gray-900 dark:text-white">Tecnólogo en Sistemas de información</span>')
-									.replace('Desarrollador Full Stack', '<span class="font-semibold text-gray-900 dark:text-white">Desarrollador Full Stack</span>')
+								el.innerHTML = es.replace('Científico de la Computación', '<span class="font-semibold text-gray-900 dark:text-white">Científico de la Computación</span>')
+									.replace('Desarrollador de Software', '<span class="font-semibold text-gray-900 dark:text-white">Desarrollador de Software</span>')
 									.replace('Ctrl', '<span class="font-semibold text-gray-900 dark:text-white">Ctrl</span>')
 									.replace(' P ', '<span class="font-semibold text-gray-900 dark:text-white"> P </span>')
 									.replace('API, bases de datos y servicios de nube modernoss', '<span class="font-semibold text-gray-900 dark:text-white"> API, bases de datos y servicios de nube modernos</span>')
@@ -71,8 +71,8 @@ import "../styles/content.css";
 									
 							} else {
 								// Para inglés
-								el.innerHTML = en.replace('Technologist in Information Systems', '<span class="font-semibold text-gray-900 dark:text-white">Technologist in Information Systems</span>')
-									.replace('Full Stack Developer', '<span class="font-semibold text-gray-900 dark:text-white">Full Stack Developer</span>')
+								el.innerHTML = en.replace('Computer Scientist', '<span class="font-semibold text-gray-900 dark:text-white">Computer Scientist</span>')
+									.replace('Software Developer', '<span class="font-semibold text-gray-900 dark:text-white">Software Developer</span>')
 									.replace('Ctrl', '<span class="font-semibold text-gray-900 dark:text-white">Ctrl</span>')
 									.replace(' P ', '<span class="font-semibold text-gray-900 dark:text-white"> P </span>')
 									.replace('APIs, databases, and modern cloud services', '<span class="font-semibold text-gray-900 dark:text-white"> APIs, databases, and modern cloud services</span>')
