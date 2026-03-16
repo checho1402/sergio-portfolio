@@ -2,7 +2,7 @@
 
 Un portafolio moderno, responsive y bilingüe construido con **Astro** y **Tailwind CSS**. Presenta experiencia profesional, habilidades y proyectos como Desarrollador Full Stack.
 
-🌐 **Sitio en vivo:** [Ver Portafolio](https://sergioramos.com)
+🌐 **Sitio en vivo:** [Ver Portafolio](https://sergio-ramos-villena.com)
 
 ## ✨ Características
 
