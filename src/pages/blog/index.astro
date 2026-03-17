@@ -35,7 +35,7 @@ const translations = {
             <ul class="space-y-8">
                 {posts.map((post) => (
 				<li class="blog-card" data-lang={post.data.lang} data-group={post.data.group}>
-                    <a href={`/blog/${post.slug}`} class="block px-5 py-4 hover:opacity-80 hover:bg-gray-200 dark:hover:bg-gray-900 rounded-lg transition text-gray-900 dark:text-white">
+                    <a href={`/blog/${post.slug}`} class="block px-5 py-4 hover:opacity-80 bg-gray-100 dark:bg-gray-900  hover:bg-gray-300 dark:hover:bg-gray-800 rounded-lg transition text-gray-900 dark:text-white">
 
 			
 					<h2 class="text-xl font-semibold" data-en={post.data.lang === "en" ? post.data.title : ""} data-es={post.data.lang === "es" ? post.data.title : ""}>
