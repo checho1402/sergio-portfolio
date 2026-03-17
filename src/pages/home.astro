@@ -143,10 +143,10 @@ const translations = {
 	<Header />
 	
 	<main class="min-h-screen px-4 sm:px-6 md:px-6">
-		<section class="max-w-3xl mx-auto py-12 sm:py-16 pt-30 sm:pt-30 fade-in px-2 sm:px-0">
-			<div class="flex flex-row items-start gap-8 sm:gap-8">
+		<section class="max-w-3xl mx-auto py-12 sm:py-16 pt-20 sm:pt-30 fade-in px-2 sm:px-0">
+			<div class="flex flex-col md:flex-row items-center md:items-start gap-8  md:text-left">
 				<div class="flex flex-col pt-10 sm:flex-col items-center justify-center gap-1 sm:gap-1">
-					<div class="w-20 h-20 sm:w-28 sm:h-32 md:w-50 md:h-50 rounded-full bg-gray-100 dark:bg-gray-800 border-1 border-gray-300 dark:border-gray-600 flex items-center justify-center overflow-hidden animated-border always-visible flex-shrink-0 shadow-lg dark:shadow-white/20">
+					<div class="w-32 h-32 sm:w-28 sm:h-32 md:w-50 md:h-50 rounded-full bg-gray-100 dark:bg-gray-800 border-1 border-gray-300 dark:border-gray-600 flex items-center justify-center overflow-hidden animated-border always-visible flex-shrink-0 shadow-lg dark:shadow-white/20">
 						<img src={heroPhoto.src} alt="Sergio Ramos" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
 						<span class="text-2xl sm:text-3xl md:text-4xl text-gray-500 dark:text-gray-400 hidden">📷</span>
 					</div>
@@ -226,7 +226,7 @@ const translations = {
 					</p>
 
 
-					<div class="max-w-2xl mx-auto mt-12 grid grid-cols-1 sm:grid-cols-2">
+					<div class="max-w-2xl mx-auto mt-12 grid grid-cols-1 sm:grid-cols-2 gap-5">
 						<div>
 							<h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4" data-en={translations.interestsTitle.en} data-es={translations.interestsTitle.es}>
 								{translations.interestsTitle.en}
@@ -469,7 +469,7 @@ const translations = {
 				{translations.languages.en}
 			</h2>
 
-			<div class="grid grid-cols-3 sm:grid-cols-3 gap-3 sm:gap-3">
+			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-3">
 				{
 					idioms.map((idiom, index) => (
 						<div class="animated-border-general flex items-center gap-3 p-3 sm:p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-gray-900 dark:hover:border-gray-500 transition-all hover:scale-105 group cursor-default">
@@ -485,7 +485,7 @@ const translations = {
 			
 		</section>
 
-		<section class="max-w-3xl mx-auto parallax-section mb-100"></section>
+		<section class="max-w-3xl mx-auto parallax-section mb-130 sm:mb-100"></section>
 		
 
 	</main>

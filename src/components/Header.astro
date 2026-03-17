@@ -28,6 +28,10 @@ const currentPage = Astro.url.pathname;
 			<div class="w-px h-6 bg-gray-300 dark:bg-gray-600"></div>
 		</div>
 
+		<!-- Mobile Logo -->
+		<a href="/" class="sm:hidden flex-shrink-0">
+			<img src="/logo.png" alt="Logo" class="h-7 w-auto" />
+		</a>
 		<!-- Language and Theme Toggles -->
 		<div class="flex items-center gap-2">
 			<button id="lang-btn" onclick="window.toggleLang()" class="px-2 py-1 text-xs font-bold rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer whitespace-nowrap">
@@ -57,7 +61,7 @@ const currentPage = Astro.url.pathname;
 
 	<!-- Mobile Menu Dropdown -->
 	<div id="mobile-menu" class="hidden absolute top-14 left-4 right-4 backdrop-blur-md bg-white/80 dark:bg-gray-950/80 border border-gray-200 dark:border-gray-700 rounded-2xl px-4 py-3 space-y-2 shadow-lg sm:hidden">
-		<a href="/" onclick="window.closeMobileMenu()" class={`block px-3 py-2 rounded-lg transition-colors font-medium text-sm ${currentPage === '/' ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900' : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'}`} data-en="Home" data-es="Inicio">
+		<a href="/home" onclick="window.closeMobileMenu()" class={`block px-3 py-2 rounded-lg transition-colors font-medium text-sm ${currentPage === '/' ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900' : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'}`} data-en="Home" data-es="Inicio">
 			Home
 		</a>
 		<a href="/projects" onclick="window.closeMobileMenu()" class={`block px-3 py-2 rounded-lg transition-colors font-medium text-sm ${currentPage === '/projects' ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900' : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'}`} data-en="Projects" data-es="Proyectos">

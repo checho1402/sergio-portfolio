@@ -4,30 +4,13 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { getCollection } from "astro:content";
 
-const allPosts = await getCollection("blog");
-
-const currentLang = "en";
-const grouped = allPosts.reduce((acc, post) => {
-  const group = post.data.group;
-
-  if (!acc[group]) acc[group] = [];
-  acc[group].push(post);
-
-  return acc;
-}, {});
-
-const posts = Object.values(grouped).map((groupPosts) => {
-  return (
-    groupPosts.find(p => p.data.lang === currentLang) ??
-    groupPosts[0]
-  );
-});
+const posts = await getCollection("blog");
 
 
 
 
 const translations = {
-	subtitle: { en: 'Selected Work', es: 'Trabajos Seleccionados' },
+	subtitle: { en: 'Selected Blogs', es: 'Blogs Seleccionados' },
 	title: { en: 'Blog', es: 'Blog' },
 	description: { en: 'A space where I share ideas, reflections, and personal experiences about technology, learning, and other topics that interest me.', es: 'Un espacio donde comparto ideas, reflexiones y experiencias personales sobre tecnología, aprendizaje y otros temas que me interesan.' },
 	comingSoon: { en: 'Projects are coming', es: 'Los proyectos están por venir' }
@@ -51,16 +34,17 @@ const translations = {
 
             <ul class="space-y-8">
                 {posts.map((post) => (
-                <li data-lang={post.data.lang}>
+				<li class="blog-card" data-lang={post.data.lang} data-group={post.data.group}>
                     <a href={`/blog/${post.slug}`} class="block px-5 py-4 hover:opacity-80 hover:bg-gray-200 dark:hover:bg-gray-900 rounded-lg transition text-gray-900 dark:text-white">
 
 			
-                    <h2 class="text-xl font-semibold">
-                        {post.data.title}
-                    </h2>
+					<h2 class="text-xl font-semibold" data-en={post.data.lang === "en" ? post.data.title : ""} data-es={post.data.lang === "es" ? post.data.title : ""}>
+						{post.data.title}
+					</h2>
 					<div class="flex items-center gap-4 text-sm font-medium text-neutral-600 dark:text-neutral-400">
-						<span class="text-sm text-gray-400">Posted on {post.data.date}</span>
-						
+						<span class="text-sm text-gray-400" data-en={`Posted on ${post.data.date}`} data-es={`Publicado el ${post.data.date}`}>
+							Posted on {post.data.date}
+						</span>
 						<span class="flex items-center">
 							<svg
 								class="w-4 h-4 mr-1"
@@ -90,7 +74,24 @@ const translations = {
 	<Footer />
 
 	<script>
+		function filterPostsByLang() {
+			const currentLang = document.documentElement.getAttribute("data-lang") || "en";
+			const cards = document.querySelectorAll(".blog-card");
 
+			const groupsShown = new Set();
+
+			cards.forEach(card => {
+				const cardLang = card.getAttribute("data-lang");
+				const group = card.getAttribute("data-group");
+
+				if (cardLang === currentLang && !groupsShown.has(group)) {
+				card.style.display = "block";
+				groupsShown.add(group);
+				} else {
+				card.style.display = "none";
+				}
+			});
+		}
 		document.addEventListener('DOMContentLoaded', () => {
 			const observerOptions = {
 				root: null,
@@ -117,9 +118,14 @@ const translations = {
 					(section as HTMLElement).style.transform = `translateY(${scrolled * speed}px)`;
 				});
 			});
-		
+			filterPostsByLang();
 		});
 
+		const langObserver = new MutationObserver(filterPostsByLang);
+			langObserver.observe(document.documentElement, {
+				attributes: true,
+				attributeFilter: ["data-lang"],
+		});
 
 	</script>
 </Layout>
